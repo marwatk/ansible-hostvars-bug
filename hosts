@@ -1,0 +1,11 @@
+[databases]
+dbserver1 username=dbserver1_username
+
+[webservers]
+webserver1 dbserver=dbserver1
+
+[webservers:vars]
+db_username={{ hostvars[dbserver].username }}
+
+[unrelated]
+random1

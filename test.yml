@@ -1,0 +1,21 @@
+- hosts: webservers
+  gather_facts: no
+  tasks:
+  - name: Debug group_var direct
+    debug:
+      msg: "{{ db_username }}"
+
+  - name: Debug host_var
+    debug:
+      msg: "{{ hostvars[dbserver].username }}"
+
+- hosts: random1
+  gather_facts: no
+  tasks:
+  - name: Debug group_var indirect
+    debug:
+      msg: "{{ hostvars['webserver1'].db_username }}"
+
+  - name: Debug host_var
+    debug:
+      msg: "{{ hostvars['dbserver1'].username }}"
